@@ -1,8 +1,9 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const pageGen = require('./src/pageTemplate');
+const employees = [];
 
-const init = () => {
+const init = employees => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -48,8 +49,24 @@ const init = () => {
             name: 'role',
             message: `What is the employee's role?`,
             choices: ['Employee', 'Manager', 'Engineer', 'Intern']
+        },
+        {
+            type: 'confirm',
+            name: 'confirmAddEmployee',
+            message: 'Would you like to add another employee?',
+            default: false
         }
     ])
+    .then(data => {
+        employees.push(data);
+        if(data.confirmAddEmployee) {
+            return init(employees);
+        } else {
+            console.log(employees);
+            return employees;
+        };
+    });
 };
 
-init().then(data => {pageGen(data)});
+init(employees)
+//console.log(employees);
