@@ -104,10 +104,10 @@ const init = employees => {
         if(data.confirmAddEmployee) {
             return init(employees);
         } else {
-            console.log(employees);
+            //console.log(employees);
             return employees;
         };
     });
 };
 
-init(employees);
+init(employees).then(data => {pageGen(employees)});
