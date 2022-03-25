@@ -1,6 +1,12 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const pageGen = require('./src/pageTemplate');
+
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+
 const employees = [];
 
 const init = employees => {
@@ -48,7 +54,7 @@ const init = employees => {
             type: 'list',
             name: 'role',
             message: `What is the employee's role?`,
-            choices: ['Employee', 'Manager', 'Engineer', 'Intern']
+            choices: ['Manager', 'Engineer', 'Intern']
         },
         {
             type: 'input',
@@ -100,11 +106,21 @@ const init = employees => {
         }
     ])
     .then(data => {
-        employees.push(data);
+        switch(data.role) {
+            case 'Manager':
+                employees.push(new Manager(data.name, data.id, data.email, data.role, data.officeNo));
+                break;
+            case 'Engineer':
+                employees.push(new Engineer(data.name, data.id, data.email, data.role, data.github));
+                break;
+            case 'Intern':
+                employees.push(new Intern(data.name, data.id, data.email, data.role, data.school));
+                break;
+        };
         if(data.confirmAddEmployee) {
             return init(employees);
         } else {
-            //console.log(employees);
+            console.log(employees);
             return employees;
         };
     });
