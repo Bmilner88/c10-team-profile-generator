@@ -2,7 +2,6 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const pageGen = require('./src/pageTemplate');
 
-const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -120,10 +119,15 @@ const init = employees => {
         if(data.confirmAddEmployee) {
             return init(employees);
         } else {
-            console.log(employees);
             return employees;
         };
     });
 };
 
-init(employees).then(data => {pageGen(employees)});
+init(employees)
+    .then(data => {
+        return pageGen(employees)
+    })
+    .then(html => {
+        fs.writeFile('./dist/index.html', html);
+    })
