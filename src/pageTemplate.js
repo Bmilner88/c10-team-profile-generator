@@ -3,8 +3,8 @@ const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
 
-module.exports = data => {
-    new Employee(data.name, data.id, data.email);
+module.exports = arr => {
+    
     
 return `
 <!DOCTYPE html>
