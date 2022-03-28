@@ -11,8 +11,7 @@ A simple team profile generator using Object Oriented Programming as well as Jes
 - [Installation](#installation)
 - [Testing](#testing)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [Questions](#questions)
+- [Links](#links)
 
 
 ## Installation
