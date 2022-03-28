@@ -71,7 +71,6 @@ const teamGen = team => {
                 break;
         };
     });
-
     return html.join('');
 };
 
@@ -116,7 +115,7 @@ const writeFile = fileContent => {
                 reject(err);
                 return;
             }
-
+            console.log('File Created!');
             resolve({
                 ok: true,
                 message: 'File created!'
