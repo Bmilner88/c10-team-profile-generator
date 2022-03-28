@@ -1,6 +1,5 @@
-const fs = require('fs');
 const inquirer = require('inquirer');
-const pageGen = require('./src/pageTemplate');
+const { pageGen, writeFile } = require('./src/pageTemplate');
 
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
@@ -29,7 +28,7 @@ const init = () => {
                 name: 'managerId',
                 message: 'Manager ID:',
                 validate: idInput => {
-                    if(idInput && !isNaN) {
+                    if(idInput) {
                         return true;
                     } else {
                         console.log(`Please enter the manager's ID`)
@@ -55,7 +54,7 @@ const init = () => {
                 name: 'officeNo',
                 message: 'What is their office number?',
                 validate: officeNo => {
-                    if(officeNo && !isNaN) {
+                    if(officeNo) {
                         return true;
                     } else {
                         console.log(`Please enter the manager's office number`);
@@ -92,11 +91,10 @@ const init = () => {
                     internGen();
                     break;
                 default:
-                    pageGen(employees).then(html => {
-                        fs.writeFile('./dist/index.html', html, 'utf-8');
-                    })
-            }
-        })
+                    console.log(employees);
+                    writeFile(pageGen(employees))
+            };
+        });
     };
 
     const engineerGen = () => {
@@ -119,7 +117,7 @@ const init = () => {
                 name: 'engineerId',
                 message: 'Engineer ID:',
                 validate: idInput => {
-                    if(idInput && !isNaN) {
+                    if(idInput) {
                         return true;
                     } else {
                         console.log(`Please enter the engineer's ID`)
@@ -183,9 +181,9 @@ const init = () => {
             {
                 type: 'input',
                 name: 'internId',
-                message: 'Manager ID:',
+                message: 'Intern ID:',
                 validate: idInput => {
-                    if(idInput && !isNaN) {
+                    if(idInput) {
                         return true;
                     } else {
                         console.log(`Please enter the intern's ID`)
@@ -196,7 +194,7 @@ const init = () => {
             {
                 type: 'input',
                 name: 'internEmail',
-                message: `What is the manager's email address?`,
+                message: `What is the intern's email address?`,
                 validate: emailInput => {
                     if(emailInput) {
                         return true;

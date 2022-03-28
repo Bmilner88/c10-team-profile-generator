@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const teamGen = team => {
     const managerGen = manager => {
         return `
@@ -72,7 +74,7 @@ const teamGen = team => {
     return html.join('');
 };
 
-module.exports = arr => {
+const pageGen = arr => {
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -104,3 +106,21 @@ module.exports = arr => {
 </html>
 `;
 };
+
+const writeFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/index.html', fileContent, err => {
+            if(err) {
+                reject(err);
+                return;
+            }
+
+            resolve({
+                ok: true,
+                message: 'File created!'
+            });
+        });
+    });
+};
+
+module.exports = { pageGen, writeFile };
