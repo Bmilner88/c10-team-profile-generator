@@ -80,7 +80,7 @@ const init = () => {
                 type: 'list',
                 name: 'role',
                 message: `What kind of employee do you want to add?`,
-                choices: ['Engineer', 'Intern', 'Done adding members']
+                choices: ['Engineer', 'Intern', 'Finish building my team']
             },
         ]).then(input => {
             switch(input.role) {
@@ -91,8 +91,7 @@ const init = () => {
                     internGen();
                     break;
                 default:
-                    console.log(employees);
-                    writeFile(pageGen(employees))
+                    writeFile(pageGen(employees));
             };
         });
     };

@@ -11,7 +11,7 @@ const teamGen = team => {
             <div class="card-body">
                 <ul>
                     <li>ID: ${manager.getId()}</li>
-                    <li>Email: ${manager.getEmail()}</li>
+                    <li>Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
                     <li>Office Number: ${manager.getOfficeNumber()}</li>
                 </ul>
             </div>
@@ -29,7 +29,7 @@ const teamGen = team => {
             <div class="card-body">
                 <ul>
                     <li>ID: ${engineer.getId()}</li>
-                    <li>Email: ${engineer.getEmail()}</li>
+                    <li>Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
                     <li>GitHub: <a href="https://github.com/${engineer.getGithub()}" target="_blank">${engineer.getGithub()}</a></li>
                 </ul>
             </div>
@@ -47,7 +47,7 @@ const teamGen = team => {
             <div class="card-body">
                 <ul>
                     <li>ID: ${intern.getId()}</li>
-                    <li>Email: ${intern.getEmail()}</li>
+                    <li>Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
                     <li>School: ${intern.getSchool()}</li>
                 </ul>
             </div>
@@ -89,7 +89,7 @@ const pageGen = arr => {
 </head>
 
 <body>
-    <header>
+    <header class="container">
         <div class="col-12 jumbotron mb-3">
             <h1 class="text-center">My Team</h1>
         </div>
@@ -98,7 +98,9 @@ const pageGen = arr => {
     <div class="container">
         <div class="row>
             <div class="col-12 d-flex justify-content-center">
-                ${teamGen(arr)}
+                
+            ${teamGen(arr)}
+            
             </div>
         </div>
     </div>
