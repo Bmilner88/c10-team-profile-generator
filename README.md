@@ -36,4 +36,4 @@ You must have Node.js installed to run the program!
 
 ## Links
 
-* [Walkthrough Video](https://drive.google.com/file/d/1fk-QZOBPFZeY1ycwvCDzDQp3f09VefM4/view)
+* [Walkthrough Video](https://drive.google.com/file/d/1g4bzCbOIVsQF-tDrNC3ErwjUQux3bK6v/view)
